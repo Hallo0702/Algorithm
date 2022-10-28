@@ -33,11 +33,16 @@ for i in range(N-1):
 global boss
 answer = 0
 boss = [i for i in range(N)]
+cnt = 1
 
 while d:
     w, x, y = heapq.heappop(d)
     if find_boss(x) != find_boss(y):
         union(x,y)
         answer += w
+        cnt += 1
+
+    if cnt == N:
+        break
 
 print(round(answer,2))
