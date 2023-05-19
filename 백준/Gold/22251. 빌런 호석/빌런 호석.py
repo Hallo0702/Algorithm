@@ -46,12 +46,9 @@ def dfs(level, cnt, now):
         if check[int(now[level])][i] <= cnt:
             temp = list(now)
             temp[level] = str(i)
-            now = ''.join(temp)
-            total += dfs(level+1,cnt-check[int(save)][i],now)
-            temp = list(now)
-            temp[level] = save
-            now = ''.join(temp)
-
+            temp = ''.join(temp)
+            total += dfs(level+1,cnt-check[int(save)][i],temp)
+            
     return total
 
 
