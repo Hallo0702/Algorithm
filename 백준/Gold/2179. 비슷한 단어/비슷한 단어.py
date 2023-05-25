@@ -1,12 +1,8 @@
-from collections import defaultdict
-
 N = int(input())
 
 word_dict = []
 word_idx = {}
 word_cnt = [0] * (N)
-
-answer = 0
 
 def find(s, t):
     cnt = 0
