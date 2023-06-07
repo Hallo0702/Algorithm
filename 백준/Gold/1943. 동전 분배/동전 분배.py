@@ -10,10 +10,9 @@ for _ in range(3):
         total += coin * cnt
         coins[coin] = cnt
 
-    answer = 0
 
     if total % 2 == 1:
-        print(answer)
+        print(0)
         continue
 
     total //= 2
