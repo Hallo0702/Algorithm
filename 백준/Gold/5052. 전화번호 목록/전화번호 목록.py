@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 t = int(input())
 
 for _ in range(t):
@@ -6,7 +9,7 @@ for _ in range(t):
     arr = []
 
     for i in range(n):
-        arr.append(input())
+        arr.append(input().strip())
 
     arr.sort()
 
