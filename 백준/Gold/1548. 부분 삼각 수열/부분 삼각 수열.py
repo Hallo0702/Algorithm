@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def solve():
     N = int(input())
 
