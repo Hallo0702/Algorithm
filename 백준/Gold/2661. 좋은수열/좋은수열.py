@@ -3,7 +3,7 @@ N = int(input())
 
 def check(sequence):
 
-    for i in range(1,len(sequence)+1//2):
+    for i in range(1,len(sequence)//2+1):
         if sequence[-i::] == sequence[-(2*i):-i]:
             return False
     else:
