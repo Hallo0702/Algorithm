@@ -25,5 +25,4 @@ if computer[-1] == 0:
 else:
     X = N
 print(X)
-for i in range(X):
-    print(cnt[i],end=' ')
+print(' '.join(map(str,cnt[:X])))
