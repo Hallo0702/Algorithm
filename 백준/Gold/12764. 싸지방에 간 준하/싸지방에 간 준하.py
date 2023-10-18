@@ -3,25 +3,28 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-q = []
-for i in range(N):
-    start, end = map(int, input().rstrip().split())
-    heapq.heappush(q,(start,end))
+q = sorted([tuple(map(int, input().split())) for _ in range(N)], key= lambda x: x[0])
 
-computer = [0] * N
+computer = []
+possible = []
 cnt = [0] * N
 
-while q:
-    start, end = heapq.heappop(q)
+for start, end in q:
 
-    for i in range(N):
-        if computer[i] <= start:
-            cnt[i] += 1
-            computer[i] = end
-            break
+    while computer and computer[0][0] <= start:
+        last_end, idx = heapq.heappop(computer)
+        heapq.heappush(possible, idx)
 
-if computer[-1] == 0:
-    X = computer.index(0)
+    if not possible:
+        idx = len(computer)
+    else:
+        idx = heapq.heappop(possible)
+
+    heapq.heappush(computer,(end,idx))
+    cnt[idx] += 1
+
+if cnt[-1] == 0:
+    X = cnt.index(0)
 else:
     X = N
 print(X)
