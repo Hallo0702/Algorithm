@@ -3,13 +3,12 @@ N = int(input())
 if N == 1:
     print(0)
 else:
-    prime = [0,0] + [1] * (N-1)
-    prime_num = []
-    for i in range(2,N+1):
+    prime = [1] * (N+1)
+    for i in range(3,int(N**0.5)+1,2):
         if prime[i]:
-            prime_num.append(i)
             for j in range(2*i,N+1,i):
                 prime[j] = 0
+    prime_num = [2] + [i for i in range(3,N+1,2) if prime[i]]
 
     answer = 0
     left = 0
