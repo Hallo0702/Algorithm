@@ -13,19 +13,18 @@ else:
 
     answer = 0
     left = 0
-    right = 0
-    total = 2
+    total = 0
 
-    while left <= right:
-        if total > N:
+    for p in prime_num:
+        total += p
+
+        while total > N:
             total -= prime_num[left]
             left += 1
-        else:
-            if total == N:
-                answer += 1
-            right += 1
-            if right == len(prime_num):
-                break
-            total += prime_num[right]
+
+        if total == N:
+            answer += 1
+            total -= prime_num[left]
+            left += 1
 
     print(answer)
