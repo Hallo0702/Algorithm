@@ -1,29 +1,29 @@
+import sys
 import heapq
-N, M = map(int, input().split())
 
-arr = [[] for _ in range(N+1)]
-pre = [0 for _ in range(N+1)]
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+pre = [ 0 for _ in range(N+1)]
+post = [[] for _ in range(N+1)]
+answer = []
 
 for i in range(M):
-    first, last = map(int, input().split())
-    arr[first].append(last)
-    pre[last] += 1
+    A, B = map(int, input().split())
+    pre[B] += 1
+    post[A].append(B)
 
 q = []
-
 for i in range(1,N+1):
     if pre[i] == 0:
-        heapq.heappush(q,i)
-
-result = []
+        q.append(i)
 
 while q:
-    now = heapq.heappop(q)
-
-    result.append(now)
-    for num in arr[now]:
+    problem = heapq.heappop(q)
+    answer.append(problem)
+    for num in post[problem]:
         pre[num] -= 1
         if pre[num] == 0:
             heapq.heappush(q,num)
 
-print(*result)
+print(*answer)
