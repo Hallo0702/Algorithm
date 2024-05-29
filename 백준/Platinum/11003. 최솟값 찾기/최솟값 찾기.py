@@ -6,6 +6,7 @@ N, L = map(int, input().split())
 arr = list(map(int, input().split()))
 
 q = deque()
+answer = []
 for idx in range(len(arr)):
 
     num = arr[idx]
@@ -18,4 +19,6 @@ for idx in range(len(arr)):
 
     q.append((idx,num))
 
-    print(q[0][1],end=' ')
+    answer.append(q[0][1])
+
+print(' '.join(map(str,answer)))
