@@ -1,21 +1,21 @@
 import sys
 from collections import deque
-
 input = sys.stdin.readline
 
 N, L = map(int, input().split())
-A = list(map(int, input().split()))
-    
+arr = list(map(int, input().split()))
+
 q = deque()
+for idx in range(len(arr)):
 
-for idx in range(len(A)):
+    num = arr[idx]
 
-    while q and q[-1][0] >= A[idx]:
+    while q and q[-1][1] >= num:
         q.pop()
 
-    q.append((A[idx],idx))
-
-    if q[0][1] <= idx - L:
+    while q and q[0][0] <= idx - L:
         q.popleft()
 
-    print(q[0][0],end=' ')
+    q.append((idx,num))
+
+    print(q[0][1],end=' ')
