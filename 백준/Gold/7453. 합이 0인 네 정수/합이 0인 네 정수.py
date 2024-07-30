@@ -1,17 +1,17 @@
 import sys
-from collections import defaultdict
 input = sys.stdin.readline
 
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
+arr = list(map(sorted,zip(*arr)))
 
 AB = []
 CD = []
 
 for i in range(N):
     for j in range(N):
-        AB.append(arr[i][0] + arr[j][1])
-        CD.append(arr[i][2] + arr[j][3])
+        AB.append(arr[0][i] + arr[1][j])
+        CD.append(arr[2][i] + arr[3][j])
 
 
 AB.sort()
