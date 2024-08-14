@@ -1,23 +1,38 @@
-n, k = map(int,input().split())
-coins = set()
-for i in range(n):
-    coins.add(int(input()))
+from collections import deque
 
-coins = sorted(list(coins))
 
-DP = [-1] * (k+1)
-DP[0] = 0
+def sol():
+    n, k = map(int,input().split())
+    coins = set()
+    q = deque()
+    visit = [False] * (k+1)
+    for i in range(n):
+        coin = int(input())
+        if coin < k:
+            coins.add(coin)
+            q.append((coin,1))
+            visit[coin] = True
+        elif coin == k:
+            print(1)
+            return
+    coins = sorted(coins)
+    if coins[0] > k:
+        print(-1)
+        return
 
-for i in range(1,k+1):
+    while q:
+        c, t = q.popleft()
+        for coin in coins:
+            if c + coin > k:
+                break
+            elif c + coin == k:
+                print(t+1)
+                return
+            if not visit[c+coin]:
+                q.append((c+coin,t+1))
+                visit[c+coin] = True
 
-    for coin in coins:
-        if i - coin < 0:
-            break
+    print(-1)
+    return
 
-        if DP[i - coin] >= 0:
-            if DP[i] == -1:
-                DP[i] = DP[i-coin] + 1
-            else:
-                DP[i] = min(DP[i],DP[i-coin]+1)
-
-print(DP[k])
+sol()
