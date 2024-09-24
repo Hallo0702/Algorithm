@@ -1,4 +1,7 @@
 # 2번 최대 범위 먼저 구하고 풀기
+import sys
+input = sys.stdin.readline
+
 from collections import deque
 T = int(input())
 nm = deque()
