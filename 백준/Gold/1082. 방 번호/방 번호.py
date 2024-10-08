@@ -1,4 +1,3 @@
-from collections import deque
 import sys
 input = sys.stdin.readline
 
@@ -7,22 +6,9 @@ P = list(map(int, input().split()))
 M = int(input())
 
 DP = [0] * (M+1)
-q = deque()
 
-for i in range(1,N):
-    if P[i] <= M:
-        q.append((i,P[i]))
-        DP[P[i]] = i
-
-while q:
-    number, price = q.popleft()
-    if DP[price] > number:
-        continue
-
-    for j in range(N):
-        next_num = int(str(number)+str(j))
-        if price + P[j] <= M and DP[price + P[j]] < next_num:
-            DP[price+P[j]] = next_num
-            q.append((next_num,price+P[j]))
+for i in range(N-1,-1,-1):
+    for j in range(P[i],M+1):
+        DP[j] = max(DP[j], DP[j - P[i]]*10+i)
 
 print(max(DP))
