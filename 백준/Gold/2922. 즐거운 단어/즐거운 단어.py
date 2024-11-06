@@ -32,8 +32,11 @@ def find_funny(idx,cnt,flag):
             wordType[i] = 1
             find_funny(i+1,cnt*5,flag)
             wordType[i] = 0
-            find_funny(i+1,cnt*20,flag)
-            find_funny(i+1,cnt,1)
+            if flag == 0:
+                find_funny(i+1,cnt*20,flag)
+                find_funny(i+1,cnt,1)
+            else:
+                find_funny(i+1,cnt*21,flag)
             wordType[i] = -1
             break
 
