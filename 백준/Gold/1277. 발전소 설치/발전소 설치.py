@@ -33,8 +33,9 @@ for i in range(N):
             graph[j].append((i,0))
         else:
             dist = cal_distance(power_station[i],power_station[j])
-            graph[i].append((j,dist))
-            graph[j].append((i,dist))
+            if dist < M:
+                graph[i].append((j,dist))
+                graph[j].append((i,dist))
 
 
 def dijkstra(start):
@@ -44,6 +45,10 @@ def dijkstra(start):
         dist, node = heapq.heappop(q)
         if dist > distance[node]:
             continue
+
+        if dist > distance[N-1]:
+            continue
+
         for next_node, next_dist in graph[node]:
             if distance[next_node] > dist + next_dist:
                 distance[next_node] = dist + next_dist
