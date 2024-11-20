@@ -9,11 +9,10 @@ for i in range(1,N+1): # 같은 길은 우선 0 으로
 
 for m in range(M): # 한 방향 -> 0 / 1 양방향 0/0
     u, v, b = map(int, input().split())
+    road[u][v] = 0
     if b == 0:
-        road[u][v] = 0
         road[v][u] = 1
     else:
-        road[u][v] = 0
         road[v][u] = 0
 for k in range(1,N+1):
     for i in range(1,N+1):
