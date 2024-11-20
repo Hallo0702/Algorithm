@@ -3,7 +3,7 @@ input = sys.stdin.readline
 
 N, M = map(int, input().split())
 
-road = [[sys.maxsize for _ in range(N+1)] for _ in range(N+1)]
+road = [[251 for _ in range(N+1)] for _ in range(N+1)]
 for i in range(1,N+1): # 같은 길은 우선 0 으로
     road[i][i] = 0
 
